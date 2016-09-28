@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DATAModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DATAModelStoreContainer">
+          <EntitySet Name="DATD_DATA" EntityType="DATAModel.Store.DATD_DATA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DATS_REPORT_PARAM" EntityType="DATAModel.Store.DATS_REPORT_PARAM" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="DATD_DATA">
+          <Key>
+            <PropertyRef Name="COUNTER" />
+          </Key>
+          <Property Name="COUNTER0" Type="int" />
+          <Property Name="COUNTER" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LPUIN" Type="int" />
+          <Property Name="FIO_COUNTER" Type="int" />
+          <Property Name="FIO_LPUIN" Type="int" />
+          <Property Name="DATA_FILE" Type="image" />
+          <Property Name="D_START" Type="smalldatetime" />
+          <Property Name="D_MODIF" Type="smalldatetime" />
+          <Property Name="D_FIN" Type="smalldatetime" />
+          <Property Name="OPERATOR" Type="varchar" MaxLength="80" />
+          <Property Name="DATA_FILE_2" Type="image" />
+        </EntityType>
+        <EntityType Name="DATS_REPORT_PARAM">
+          <Key>
+            <PropertyRef Name="COUNTER" />
+          </Key>
+          <Property Name="COUNTER0" Type="bigint" />
+          <Property Name="LPUIN" Type="int" Nullable="false" />
+          <Property Name="STATE" Type="bigint" />
+          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="D_START" Type="smalldatetime" />
+          <Property Name="D_MODIF" Type="smalldatetime" />
+          <Property Name="D_FIN" Type="smalldatetime" />
+          <Property Name="OPERATOR" Type="varchar" MaxLength="50" />
+          <Property Name="DATA_COUNTER" Type="bigint" />
+          <Property Name="DATA_LPUIN" Type="int" />
+          <Property Name="NAME" Type="varchar" MaxLength="250" />
+          <Property Name="VALUE" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <Function Name="MC_BROWSE_CLIENT_PHOTO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="counter0_fio" Type="bigint" Mode="In" />
+          <Parameter Name="lpuin_fio" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MC_BROWSE_CLIENT_PROFILE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="counter0_credit" Type="bigint" Mode="In" />
+          <Parameter Name="lpuin_credit" Type="int" Mode="In" />
+          <Parameter Name="kod_otdeleniya" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="MC_BROWSE_PKO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="counter0_payment" Type="bigint" Mode="In" />
+          <Parameter Name="lpuin_payment" Type="int" Mode="In" />
+          <Parameter Name="kod_otdeleniya" Type="varchar" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DATAModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DATAEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="DATD_DATA" EntityType="DATAModel.DATD_DATA" />
+          <EntitySet Name="DATS_REPORT_PARAM" EntityType="DATAModel.DATS_REPORT_PARAM" />
+          <FunctionImport Name="MC_BROWSE_CLIENT_PHOTO" ReturnType="Collection(DATAModel.MC_BROWSE_CLIENT_PHOTO_Result)">
+            <Parameter Name="counter0_fio" Mode="In" Type="Int64" />
+            <Parameter Name="lpuin_fio" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MC_BROWSE_CLIENT_PROFILE" ReturnType="Collection(DATAModel.MC_BROWSE_CLIENT_PROFILE_Result)">
+            <Parameter Name="counter0_credit" Mode="In" Type="Int64" />
+            <Parameter Name="lpuin_credit" Mode="In" Type="Int32" />
+            <Parameter Name="kod_otdeleniya" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="MC_BROWSE_PKO" ReturnType="Collection(DATAModel.MC_BROWSE_PKO_Result)">
+            <Parameter Name="counter0_payment" Mode="In" Type="Int64" />
+            <Parameter Name="lpuin_payment" Mode="In" Type="Int32" />
+            <Parameter Name="kod_otdeleniya" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="DATD_DATA">
+          <Key>
+            <PropertyRef Name="COUNTER" />
+          </Key>
+          <Property Name="COUNTER0" Type="Int32" />
+          <Property Name="COUNTER" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="LPUIN" Type="Int32" />
+          <Property Name="FIO_COUNTER" Type="Int32" />
+          <Property Name="FIO_LPUIN" Type="Int32" />
+          <Property Name="DATA_FILE" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="D_START" Type="DateTime" Precision="0" />
+          <Property Name="D_MODIF" Type="DateTime" Precision="0" />
+          <Property Name="D_FIN" Type="DateTime" Precision="0" />
+          <Property Name="OPERATOR" Type="String" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="DATA_FILE_2" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="DATS_REPORT_PARAM">
+          <Key>
+            <PropertyRef Name="COUNTER" />
+          </Key>
+          <Property Name="COUNTER0" Type="Int64" />
+          <Property Name="LPUIN" Type="Int32" Nullable="false" />
+          <Property Name="STATE" Type="Int64" />
+          <Property Name="COUNTER" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="D_START" Type="DateTime" Precision="0" />
+          <Property Name="D_MODIF" Type="DateTime" Precision="0" />
+          <Property Name="D_FIN" Type="DateTime" Precision="0" />
+          <Property Name="OPERATOR" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DATA_COUNTER" Type="Int64" />
+          <Property Name="DATA_LPUIN" Type="Int32" />
+          <Property Name="NAME" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="VALUE" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <ComplexType Name="MC_BROWSE_CLIENT_PHOTO_Result">
+          <Property Type="Int32" Name="COUNTER0" Nullable="true" />
+          <Property Type="Int32" Name="LPUIN" Nullable="true" />
+          <Property Type="Int32" Name="FIO_COUNTER" Nullable="true" />
+          <Property Type="Int32" Name="FIO_LPUIN" Nullable="true" />
+          <Property Type="Binary" Name="DATA_FILE" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="OPERATOR" Nullable="true" MaxLength="80" />
+          <Property Type="DateTime" Name="D_START" Nullable="true" Precision="16" />
+        </ComplexType>
+        <ComplexType Name="MC_BROWSE_CLIENT_PROFILE_Result">
+          <Property Type="String" Name="SURNAME" Nullable="false" MaxLength="24" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="16" />
+          <Property Type="String" Name="SECNAME" Nullable="false" MaxLength="16" />
+          <Property Type="DateTime" Name="BIRTHDAY" Nullable="false" Precision="16" />
+          <Property Type="String" Name="SDOC" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="NDOC" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="WHEN" Nullable="false" Precision="16" />
+          <Property Type="String" Name="WHO" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="SEX_NAME" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="FAMILY_STATUS" Nullable="false" MaxLength="80" />
+          <Property Type="Byte" Name="FAMILY_COUNT" Nullable="false" />
+          <Property Type="String" Name="EDUCATION_NOW" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="R_FULLADR" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="J_FULLADR" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="PHONE_HOME_R" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PHONE_HOME_J" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PHONE_MOBILE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PROPERTY" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="R_POST_INDEX" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="J_POST_INDEX" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="ORG_NAME" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="ORG_SCOPE" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="POST" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="SCHEDULE" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="HIRE_YEAR" Nullable="false" />
+          <Property Type="Int32" Name="HIRE_MONTH" Nullable="false" />
+          <Property Type="Int32" Name="HIRE_DAY" Nullable="false" />
+          <Property Type="String" Name="CHIEF_SURNAME" Nullable="false" MaxLength="24" />
+          <Property Type="String" Name="CHIEF_NAME" Nullable="false" MaxLength="16" />
+          <Property Type="String" Name="CHIEF_SECNAME" Nullable="false" MaxLength="16" />
+          <Property Type="String" Name="POST_INDEX" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="FULLADR_ORG" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="PHONE_SECRETARY" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PHONE_WORK" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ORG_SITE" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="E_MAIL" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="SALARY" Nullable="false" />
+          <Property Type="Int32" Name="BUSINESS_PROFIT" Nullable="false" />
+          <Property Type="String" Name="BUSINESS_DESC" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="PROPERTY_PROFIT" Nullable="false" />
+          <Property Type="Int32" Name="PENSION" Nullable="false" />
+          <Property Type="Int32" Name="OTHER_PROFIT" Nullable="false" />
+          <Property Type="Int32" Name="GENERAL_FAMILY_PROFIT" Nullable="false" />
+          <Property Type="Int32" Name="OBLIGATORY_PAYMENT" Nullable="false" />
+          <Property Type="Int32" Name="SUMMA_ZAYMA" Nullable="false" />
+          <Property Type="DateTime" Name="DATA_ZAYMA" Nullable="false" Precision="16" />
+          <Property Type="Int32" Name="SROK_ZAYMA" Nullable="false" />
+          <Property Type="Decimal" Name="STAVKA_V_DEN" Nullable="false" Precision="3" Scale="1" />
+          <Property Type="Decimal" Name="SUMMA_PROTSENTOV_V_DEN" Nullable="false" Precision="15" Scale="2" />
+          <Property Type="DateTime" Name="DATA_VOZVRATA" Nullable="false" Precision="16" />
+          <Property Type="Decimal" Name="SUMMA_K_OPLATE" Nullable="false" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="PEREPLATA" Nullable="false" Precision="15" Scale="2" />
+          <Property Type="String" Name="NOMER_DOGOVORA" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DIRECTOR" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="BUHGALTER" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="TSEL_OF_ZAYM" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="NAL_SUD" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="NAL_KRED_OBYAZ" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="PREJN_FAM" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="ORG_NAME_RKO" Nullable="false" MaxLength="80" />
+          <Property Type="String" Name="CODE" Nullable="false" MaxLength="20" />
+          <Property Type="Byte" Name="dependant_count" Nullable="false" />
+          <Property Type="String" Name="NAME_PODR" Nullable="false" MaxLength="80" />
+        </ComplexType>
+        <ComplexType Name="MC_BROWSE_PKO_Result">
+          <Property Type="String" Name="ORG_NAME" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="NAME" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="CODE" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DIRECTOR" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="BUHGALTER" Nullable="true" MaxLength="80" />
+          <Property Type="Int32" Name="CREDIT_BILL_BASIC_SUMM" Nullable="true" />
+          <Property Type="Int32" Name="CREDIT_BILL_PERCENT" Nullable="true" />
+          <Property Type="Int32" Name="CREDIT_BILL_PENALTY_PERCENT" Nullable="true" />
+          <Property Type="Int32" Name="CREDIT_BILL_PENALTY_FIXED" Nullable="true" />
+          <Property Type="DateTime" Name="DATA_PLATEJA" Nullable="true" Precision="16" />
+          <Property Type="String" Name="BILL_CREDIT_BILL_BASIC_SUMM" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="BILL_CREDIT_BILL_PERCENT" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="BILL_CREDIT_BILL_PENALTY_PERCENT" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="BILL_CREDIT_BILL_PENALTY_FIXED" Nullable="true" MaxLength="20" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DATAModelStoreContainer" CdmEntityContainer="DATAEntities">
+          <EntitySetMapping Name="DATD_DATA">
+            <EntityTypeMapping TypeName="DATAModel.DATD_DATA">
+              <MappingFragment StoreEntitySet="DATD_DATA">
+                <ScalarProperty Name="COUNTER0" ColumnName="COUNTER0" />
+                <ScalarProperty Name="COUNTER" ColumnName="COUNTER" />
+                <ScalarProperty Name="LPUIN" ColumnName="LPUIN" />
+                <ScalarProperty Name="FIO_COUNTER" ColumnName="FIO_COUNTER" />
+                <ScalarProperty Name="FIO_LPUIN" ColumnName="FIO_LPUIN" />
+                <ScalarProperty Name="DATA_FILE" ColumnName="DATA_FILE" />
+                <ScalarProperty Name="D_START" ColumnName="D_START" />
+                <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+                <ScalarProperty Name="D_FIN" ColumnName="D_FIN" />
+                <ScalarProperty Name="OPERATOR" ColumnName="OPERATOR" />
+                <ScalarProperty Name="DATA_FILE_2" ColumnName="DATA_FILE_2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATS_REPORT_PARAM">
+            <EntityTypeMapping TypeName="DATAModel.DATS_REPORT_PARAM">
+              <MappingFragment StoreEntitySet="DATS_REPORT_PARAM">
+                <ScalarProperty Name="COUNTER0" ColumnName="COUNTER0" />
+                <ScalarProperty Name="LPUIN" ColumnName="LPUIN" />
+                <ScalarProperty Name="STATE" ColumnName="STATE" />
+                <ScalarProperty Name="COUNTER" ColumnName="COUNTER" />
+                <ScalarProperty Name="D_START" ColumnName="D_START" />
+                <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+                <ScalarProperty Name="D_FIN" ColumnName="D_FIN" />
+                <ScalarProperty Name="OPERATOR" ColumnName="OPERATOR" />
+                <ScalarProperty Name="DATA_COUNTER" ColumnName="DATA_COUNTER" />
+                <ScalarProperty Name="DATA_LPUIN" ColumnName="DATA_LPUIN" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="MC_BROWSE_CLIENT_PHOTO" FunctionName="DATAModel.Store.MC_BROWSE_CLIENT_PHOTO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DATAModel.MC_BROWSE_CLIENT_PHOTO_Result">
+                <ScalarProperty Name="COUNTER0" ColumnName="COUNTER0" />
+                <ScalarProperty Name="LPUIN" ColumnName="LPUIN" />
+                <ScalarProperty Name="FIO_COUNTER" ColumnName="FIO_COUNTER" />
+                <ScalarProperty Name="FIO_LPUIN" ColumnName="FIO_LPUIN" />
+                <ScalarProperty Name="DATA_FILE" ColumnName="DATA_FILE" />
+                <ScalarProperty Name="OPERATOR" ColumnName="OPERATOR" />
+                <ScalarProperty Name="D_START" ColumnName="D_START" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MC_BROWSE_CLIENT_PROFILE" FunctionName="DATAModel.Store.MC_BROWSE_CLIENT_PROFILE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DATAModel.MC_BROWSE_CLIENT_PROFILE_Result">
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SECNAME" ColumnName="SECNAME" />
+                <ScalarProperty Name="BIRTHDAY" ColumnName="BIRTHDAY" />
+                <ScalarProperty Name="SDOC" ColumnName="SDOC" />
+                <ScalarProperty Name="NDOC" ColumnName="NDOC" />
+                <ScalarProperty Name="WHEN" ColumnName="WHEN" />
+                <ScalarProperty Name="WHO" ColumnName="WHO" />
+                <ScalarProperty Name="SEX_NAME" ColumnName="SEX_NAME" />
+                <ScalarProperty Name="FAMILY_STATUS" ColumnName="FAMILY_STATUS" />
+                <ScalarProperty Name="FAMILY_COUNT" ColumnName="FAMILY_COUNT" />
+                <ScalarProperty Name="EDUCATION_NOW" ColumnName="EDUCATION_NOW" />
+                <ScalarProperty Name="R_FULLADR" ColumnName="R_FULLADR" />
+                <ScalarProperty Name="J_FULLADR" ColumnName="J_FULLADR" />
+                <ScalarProperty Name="PHONE_HOME_R" ColumnName="PHONE_HOME_R" />
+                <ScalarProperty Name="PHONE_HOME_J" ColumnName="PHONE_HOME_J" />
+                <ScalarProperty Name="PHONE_MOBILE" ColumnName="PHONE_MOBILE" />
+                <ScalarProperty Name="PROPERTY" ColumnName="PROPERTY" />
+                <ScalarProperty Name="R_POST_INDEX" ColumnName="R_POST_INDEX" />
+                <ScalarProperty Name="J_POST_INDEX" ColumnName="J_POST_INDEX" />
+                <ScalarProperty Name="ORG_NAME" ColumnName="ORG_NAME" />
+                <ScalarProperty Name="ORG_SCOPE" ColumnName="ORG_SCOPE" />
+                <ScalarProperty Name="POST" ColumnName="POST" />
+                <ScalarProperty Name="SCHEDULE" ColumnName="SCHEDULE" />
+                <ScalarProperty Name="HIRE_YEAR" ColumnName="HIRE_YEAR" />
+                <ScalarProperty Name="HIRE_MONTH" ColumnName="HIRE_MONTH" />
+                <ScalarProperty Name="HIRE_DAY" ColumnName="HIRE_DAY" />
+                <ScalarProperty Name="CHIEF_SURNAME" ColumnName="CHIEF_SURNAME" />
+                <ScalarProperty Name="CHIEF_NAME" ColumnName="CHIEF_NAME" />
+                <ScalarProperty Name="CHIEF_SECNAME" ColumnName="CHIEF_SECNAME" />
+                <ScalarProperty Name="POST_INDEX" ColumnName="POST_INDEX" />
+                <ScalarProperty Name="FULLADR_ORG" ColumnName="FULLADR_ORG" />
+                <ScalarProperty Name="PHONE_SECRETARY" ColumnName="PHONE_SECRETARY" />
+                <ScalarProperty Name="PHONE_WORK" ColumnName="PHONE_WORK" />
+                <ScalarProperty Name="ORG_SITE" ColumnName="ORG_SITE" />
+                <ScalarProperty Name="E_MAIL" ColumnName="E_MAIL" />
+                <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+                <ScalarProperty Name="BUSINESS_PROFIT" ColumnName="BUSINESS_PROFIT" />
+                <ScalarProperty Name="BUSINESS_DESC" ColumnName="BUSINESS_DESC" />
+                <ScalarProperty Name="PROPERTY_PROFIT" ColumnName="PROPERTY_PROFIT" />
+                <ScalarProperty Name="PENSION" ColumnName="PENSION" />
+                <ScalarProperty Name="OTHER_PROFIT" ColumnName="OTHER_PROFIT" />
+                <ScalarProperty Name="GENERAL_FAMILY_PROFIT" ColumnName="GENERAL_FAMILY_PROFIT" />
+                <ScalarProperty Name="OBLIGATORY_PAYMENT" ColumnName="OBLIGATORY_PAYMENT" />
+                <ScalarProperty Name="SUMMA_ZAYMA" ColumnName="SUMMA_ZAYMA" />
+                <ScalarProperty Name="DATA_ZAYMA" ColumnName="DATA_ZAYMA" />
+                <ScalarProperty Name="SROK_ZAYMA" ColumnName="SROK_ZAYMA" />
+                <ScalarProperty Name="STAVKA_V_DEN" ColumnName="STAVKA_V_DEN" />
+                <ScalarProperty Name="SUMMA_PROTSENTOV_V_DEN" ColumnName="SUMMA_PROTSENTOV_V_DEN" />
+                <ScalarProperty Name="DATA_VOZVRATA" ColumnName="DATA_VOZVRATA" />
+                <ScalarProperty Name="SUMMA_K_OPLATE" ColumnName="SUMMA_K_OPLATE" />
+                <ScalarProperty Name="PEREPLATA" ColumnName="PEREPLATA" />
+                <ScalarProperty Name="NOMER_DOGOVORA" ColumnName="NOMER_DOGOVORA" />
+                <ScalarProperty Name="DIRECTOR" ColumnName="DIRECTOR" />
+                <ScalarProperty Name="BUHGALTER" ColumnName="BUHGALTER" />
+                <ScalarProperty Name="TSEL_OF_ZAYM" ColumnName="TSEL_OF_ZAYM" />
+                <ScalarProperty Name="NAL_SUD" ColumnName="NAL_SUD" />
+                <ScalarProperty Name="NAL_KRED_OBYAZ" ColumnName="NAL_KRED_OBYAZ" />
+                <ScalarProperty Name="PREJN_FAM" ColumnName="PREJN_FAM" />
+                <ScalarProperty Name="ORG_NAME_RKO" ColumnName="ORG_NAME_RKO" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="dependant_count" ColumnName="dependant_count" />
+                <ScalarProperty Name="NAME_PODR" ColumnName="NAME_PODR" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MC_BROWSE_PKO" FunctionName="DATAModel.Store.MC_BROWSE_PKO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DATAModel.MC_BROWSE_PKO_Result">
+                <ScalarProperty Name="ORG_NAME" ColumnName="ORG_NAME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="DIRECTOR" ColumnName="DIRECTOR" />
+                <ScalarProperty Name="BUHGALTER" ColumnName="BUHGALTER" />
+                <ScalarProperty Name="CREDIT_BILL_BASIC_SUMM" ColumnName="CREDIT_BILL_BASIC_SUMM" />
+                <ScalarProperty Name="CREDIT_BILL_PERCENT" ColumnName="CREDIT_BILL_PERCENT" />
+                <ScalarProperty Name="CREDIT_BILL_PENALTY_PERCENT" ColumnName="CREDIT_BILL_PENALTY_PERCENT" />
+                <ScalarProperty Name="CREDIT_BILL_PENALTY_FIXED" ColumnName="CREDIT_BILL_PENALTY_FIXED" />
+                <ScalarProperty Name="DATA_PLATEJA" ColumnName="DATA_PLATEJA" />
+                <ScalarProperty Name="BILL_CREDIT_BILL_BASIC_SUMM" ColumnName="BILL_CREDIT_BILL_BASIC_SUMM" />
+                <ScalarProperty Name="BILL_CREDIT_BILL_PERCENT" ColumnName="BILL_CREDIT_BILL_PERCENT" />
+                <ScalarProperty Name="BILL_CREDIT_BILL_PENALTY_PERCENT" ColumnName="BILL_CREDIT_BILL_PENALTY_PERCENT" />
+                <ScalarProperty Name="BILL_CREDIT_BILL_PENALTY_FIXED" ColumnName="BILL_CREDIT_BILL_PENALTY_FIXED" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

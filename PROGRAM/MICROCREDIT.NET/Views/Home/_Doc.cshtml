@@ -1,0 +1,125 @@
+﻿@model MICROCREDIT.NET.MC_BROWSE_ACTIVE_DOCUMENT_Result
+
+@{
+  Layout = null;
+}
+
+<div class="row">
+  <div class="col-md-2">
+    <button class="btn btn-primary" ng-click="btnCancelClick()">Назад</button>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-9">
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="">Фамилия</label>
+          <div>
+            <input class="form-control" type="text" ng-model="SURNAME" />
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="">Имя</label>
+          <div>
+            <input class="form-control" type="text" ng-model="NAME" />
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="">Отчество</label>
+          <div>
+            <input class="form-control" type="text" ng-model="SECNAME" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-3 form-group">
+        <label>Пол</label>
+        <select class="form-control" ng-model="SEX" ng-options="sex.code as sex.name for sex in SEX_OPTIONS">
+        </select>
+      </div>
+
+      <div class="col-md-3 form-group">
+        <label>Дата рождения</label>
+        <input type="date" datepicker-popup class="form-control" ng-model="BIRTHDAY" />
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-8 form-group">
+        <label>Тип</label>
+        <input type="text" class="form-control" />
+      </div>
+
+      <div class="col-md-2 form-group">
+        <label>Серия</label>
+        <input type="text" class="form-control" />
+      </div>
+
+      <div class="col-md-2 form-group">
+        <label>Номер</label>
+        <input type="text" class="form-control" />
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-md-3">
+    <div>
+      <img class="img-thumbnail" src="@Url.Action("GetPhoto", "Home")" />
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-md-2 form-group">
+    <label>Дата</label>
+    <input type="date" class="form-control" />
+  </div>
+
+  <div class="col-md-8 form-group">
+    <label>Выдан</label>
+    <input type="text" class="form-control" />
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-md-3 form-group">
+    <label>Прежн. фамилия</label>
+    <input type="text" class="form-control" />
+  </div>
+
+  <div class="col-md-7 form-group">
+    <label>Место рождения</label>
+    <input type="text" class="form-control" />
+  </div>
+
+  <div class="col-md-2 form-group">
+    <label>Код подраздел-я</label>
+    <input type="text" class="form-control" />
+  </div>
+
+</div>
+
+

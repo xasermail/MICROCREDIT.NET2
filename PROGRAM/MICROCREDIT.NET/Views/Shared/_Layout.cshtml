@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @Scripts.Render("~/Scripts/jquery-2.1.4.js")
+    @Scripts.Render("~/Scripts/bootstrap.js")
+    @Styles.Render("~/Content/bootstrap.css")
+    @Styles.Render("~/Content/site.css")
+    @Styles.Render("~/Content/themes/base/jquery-ui.css")
+    @Styles.Render("~/Content/jquery.jqGrid/ui.jqgrid.css")
+    @Scripts.Render("~/Scripts/jquery-ui-1.10.4.min.js")
+    @Scripts.Render("~/Scripts/jquery.jqGrid.js")
+    @Scripts.Render("~/Scripts/angular.js")
+    @Scripts.Render("~/Scripts/angular-route.js")
+    @Scripts.Render("~/app/appModule.js")
+    @Scripts.Render("~/app/appRoutes.js")
+    @Scripts.Render("~/app/doc/docController.js")
+    @Scripts.Render("~/app/doc/docDirective.js")
+    @Scripts.Render("~/app/doc/docService.js")
+    @Scripts.Render("~/app/rk/rkController.js")
+    @Scripts.Render("~/Scripts/i18n/grid.locale-ru.js")
+    @Scripts.Render("~/Scripts/angular-ui/ui-bootstrap-tpls.js")
+    @RenderSection("head", false)
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div ng-app="appModule">
+        @RenderBody()
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Form";
+    Layout = null;
+}
+
+<h2>Form</h2>
+
+@*@Html.Partial("_Doc")*@
+
+<div>
+  <div class="container">
+    <fieldset>
+      <legend>Документ</legend>
+      <doc />
+    </fieldset>
+    <fieldset>
+      <legend>Дополнительные сведения</legend>
+    </fieldset>
+    <fieldset>
+      <legend>Адрес регистрации</legend>
+    </fieldset>
+    <fieldset>
+      <legend>Адрес жительства</legend>
+    </fieldset>
+    <fieldset>
+      <legend>Контактные лица</legend>
+    </fieldset>
+
+    <input type="submit" value="Сохранить" class="btn btn-primary" ng-click="btnSaveClick()" />
+
+  </div>
+
+</div>

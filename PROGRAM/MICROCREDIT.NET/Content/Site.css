@@ -1,0 +1,26 @@
+﻿
+.btn-default {
+  padding: 5px 5px 5px 25px;
+  border: 1px solid #666;
+  color:#000;
+  text-decoration:none;
+}
+.button-add {
+  background: url("Images/btn/new.bmp") no-repeat scroll 1px center;
+}
+
+.button-edit {
+  background: url("Images/btn/edit.bmp") no-repeat scroll 1px center;
+}
+.button-del {
+  background: url("Images/btn/del.bmp") no-repeat scroll 1px center;
+}
+.button-window {
+  background:  url("Images/btn/window.bmp") no-repeat scroll 1px center;
+}
+.button-info {
+  background:  url("Images/btn/info.bmp") no-repeat scroll 1px center;
+}
+.button-look {
+  background:  url("Images/btn/look.bmp") no-repeat;
+}

@@ -1,0 +1,202 @@
+﻿@{
+  ViewBag.Title = "Home/Index";
+}
+
+<div id="divHeader">
+</div>
+<div id="buttons" class="btn-toolbar" style="margin-top: 0px;" role ="toolbar">
+  <div id="btn_group" class="btn-group"> 
+    <button style="margin-left: 10px;" type="button" id="btnAdd" class="btn btn-default button-add" > Нов. запись</button>
+    <button type="button" id="btnEdit" class="btn btn-default button-edit"
+      ng-click="btnEditClick(COUNTER0_FIO, LPUIN_FIO)"> Редак-ть </button>
+    <button type="button" id="btnDel" class="btn btn-default button-del"> Удалить </button>
+    <button type="button" id="btnNewWindow" class="btn btn-default button-window"> Просмотр в новом окне </button>
+    <button type="button" id="btnRefresh" class="btn btn-default button-info"> Кр. инф. </button>
+  </div>
+</div>
+<br />
+ <div class="row" id="Filter">
+    <div class="col-md-5">
+      <div style="margin-left: 10px;" class="input-group">
+        <label style="margin-left: 5px;" class="input-group-addon input-label-filter"> ФИО </label>
+        <input type="text" class="form-control" name="edFIO" placeholder="ФИО" />
+        <label class="input-group-addon input-label-filter"> или Телефон </label>
+        <input type="text" class="form-control" name="edMobil" placeholder="Телефон" />
+      </div>
+    </div>
+    <div class="col-md-3">
+     <div id="buttons" class="btn-toolbar" style="margin-top: 0px;" role ="toolbar">
+       <div id="btn_group" class="btn-group"> 
+         <button type="button" class="btn btn-default  button-look" id="btnSearch"> ......... </button>
+        </div>
+      </div>
+    </div>
+  </div>
+   <div>
+    <ul class="list-inline">
+      <li>
+        <div>
+          <label style="margin-left: 10px;"> Займ </label>
+        </div>
+      </li>
+      <li>
+        <div class="checkbox">
+          <label><input type="checkbox" name="All" />все</label>
+        </div>
+      </li>
+      <li>
+        <div class="checkbox">
+          <label><input type="checkbox" name="Open" />не закрыт</label>
+        </div>
+      </li>
+      <li>
+        <div class="checkbox">
+          <label><input type="checkbox" name="Last" />последний</label>
+        </div>
+      </li>
+     </ul>
+  </div>
+
+<div id="reestrParent">
+     <table id="reestrKlient"></table>
+     <div id="pager" style="height:auto;"></div>
+</div>
+
+<input type="text" ng-model="COUNTER_FIO" style="display: none;" />
+<input type="text" ng-model="COUNTER0_FIO" style="display: none;" />
+<input type="text" ng-model="LPUIN_FIO" style="display: none;" />
+
+
+<script type="text/javascript">
+  $(document).ready(
+	  function () {
+      $("#reestrKlient").jqGrid({
+	    url: '@Url.Action("RequeryFio")',
+	    datatype: "json",
+      colNames:
+        [
+          'COUNTER_FIO',
+          "COUNTER0_FIO",
+          "LPUIN_FIO",
+          'Фамилия',
+          'Имя',
+          'Отчество',
+          'Дата рождения',
+          'Акт.займ',
+          '2',
+          '1',
+          '0',
+          'Дата возврата',
+          'Просрочен',
+          'Статус',
+          'Отделение',
+          'Оператор',
+          'Сумма займа',
+          'Комм. займа',
+          'Дата создания займа',
+          'Остаток по займу'
+        ],
+      colModel:
+        [
+          { name: 'COUNTER_FIO', index: 'COUNTER_FIO', width: 0, editable: false, width: 0, hidden : true},
+          { name: "COUNTER0_FIO", index: "COUNTER0_FIO", hidden: true },
+          { name: "LPUIN_FIO", index: "LPUIN_FIO", hidden: true },
+          { name: 'SURNAME', index: 'SURNAME', width: 50, editable: true, search: true, edittype: 'text' },
+          { name: 'NAME', index: 'NAME', width: 50, editable: true, search: true, edittype: 'text' },
+                             
+          { name: 'SECNAME', index: 'SECNAME', editable: true, width: 50, search: true, edittype: 'text' },
+          { name: 'BIRTHDAY', index: 'BIRTHDAY', 
+              width: 100, editable: true, width: 45, search: true, edittype: 'text', 
+              formatter: 'date', formatoptions: { srcformat: 'Y-m-d H:i:s', newformat: 'd.m.Y' } },
+          { name: 'AKTIV_ZAYM', index: 'AKTIV_ZAYM', width: 20, editable: true, search: true, edittype: 'text' },
+
+          { name: 'DN_DO_VOZVR_2', index: 'DN_DO_VOZVR_2', width: 15, editable: true, search: true, edittype: 'text' },
+          { name: 'DN_DO_VOZVR_1', index: 'DN_DO_VOZVR_1', width: 15, editable: true, search: true, edittype: 'text' },
+          { name: 'DN_DO_VOZVR_0', index: 'DN_DO_VOZVR_0', width: 15, editable: true, search: true, edittype: 'text' },
+          { name: 'DATA_VOZVRATA', index: 'DATA_VOZVRATA', 
+            width: 70, editable: true, width: 45, search: true, edittype: 'text', 
+            formatter: 'date', formatoptions: { srcformat: 'Y-m-d H:i:s', newformat: 'd.m.Y' } },
+          { name: 'DN_PROSROCHEN', index: 'DN_PROSROCHEN', width: 20, editable: true, search: true, edittype: 'text' },
+          { name: 'STAT', index: 'STAT', width: 20, editable: true, search: true, edittype: 'text' },
+          { name: 'KOD_OTDELENIYA', index: 'KOD_OTDELENIYA', width: 20, editable: true, search: true, edittype: 'text' },
+          { name: 'OPERATOR_START', index: 'OPERATOR_START', width: 40, editable: true, search: true, edittype: 'text' },
+          { name: 'SUMMA_ZAYMA', index: 'SUMMA_ZAYMA', width: 40, editable: true, search: true, edittype: 'text' },
+          { name: 'COMMENT', index: 'COMMENT', width: 20, editable: true, search: true, edittype: 'text' },
+          { name: 'D_START_CREDIT', index: 'D_START_CREDIT', width: 45, editable: true, search: true, edittype: 'text',
+            formatter: 'date', formatoptions: { srcformat: 'Y-m-d H:i:s', newformat: 'd.m.Y' } },
+          { name: 'OSTATOK_PO_ZAYMU', index: 'OSTATOK_PO_ZAYMU', width: 50, editable: true, search: true, edittype: 'text' }
+        ],
+      pager: jQuery("#pager"),
+      rowNum: 5000, // число отображаемых строк
+      pgbuttons: false, // кнопки переключения между страницами
+      pginput: false, // edit для ввода номера страницы для перехода
+      gridview: true,
+      ignoreCase: true,
+      altRows: true,
+      viewrecords: true,   //Отображение внизу грида надписи о количестве строк
+      rownumbers: true,
+      loadonce: true, // загрузка только один раз
+      emptyrecords: 'Данные отсутствуют',
+      sortname: 'COUNTER_FIO', // сортировка по умолчанию по столбцу Id
+      sortorder: "desc", // порядок сортировки
+      jsonReader: {
+        root: "rows",
+        page: "page",
+        total: "total",
+        records: "records",
+        repeatitems: false,
+        id: "0"
+      },
+	    loadError: function (xhr, status, error) { alert(error); },
+	    caption: "Реестр клиентов",
+      autowidth: true,
+      height: 300,
+
+      onSelectRow: function(ids) {
+
+        var rowData = jQuery(this).getRowData(ids);
+
+        jQuery("input[ng-model=COUNTER_FIO]").val(rowData["COUNTER_FIO"]);
+        angular.element(jQuery("input[ng-model=COUNTER_FIO]")).triggerHandler("input");
+
+        jQuery("input[ng-model=COUNTER0_FIO]").val(rowData["COUNTER0_FIO"]);
+        angular.element(jQuery("input[ng-model=COUNTER0_FIO]")).triggerHandler("input");
+
+        jQuery("input[ng-model=LPUIN_FIO]").val(rowData["LPUIN_FIO"]);
+        angular.element(jQuery("input[ng-model=LPUIN_FIO]")).triggerHandler("input");
+
+      }
+
+    }).navGrid('#pager', { edit: false, add: false, del: false, search: false, refresh: true, cloneToTop: false },
+			        {
+			          // refresh options
+  			            zIndex: 100
+  				        , url: '@Url.Action("Refresh")'
+			        }
+		);
+
+    $(".ui-jqgrid-titlebar").hide();
+
+    jQuery("#reestrKlient").jqGrid('filterToolbar', {
+      stringResult: true, searchOnEnter: true,
+      defaultSearch: 'cn', ignoreCase: true
+    });
+
+    jQuery("#reestrKlient").jqGrid('setGroupHeaders', {
+      useColSpanStyle: false,
+      groupHeaders:
+      [
+        { startColumnName: 'SURNAME', numberOfColumns: 4, titleText: 'Клиент' },
+        { startColumnName: 'DN_DO_VOZVR_2', numberOfColumns: 3, titleText: 'Осталось дней до возврата' },
+        { startColumnName: 'DATA_VOZVRATA', numberOfColumns: 9, titleText: 'Информация о займе' }
+      ]
+    });
+
+    jQuery("#reestrKlient").setGridWidth(jQuery("#reestrParent").width() - 15, false);
+    $("#buttonsPr").appendTo($("#pager_left"));
+
+    jQuery(window).resize(function () {
+      jQuery("#reestrKlient").setGridWidth(jQuery("#reestrParent").width() - 15, false);
+   });
+ });
+</script>
