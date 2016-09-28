@@ -670,5 +670,19 @@ namespace MICROCREDIT.NET.Controllers
 
         }
 
+
+        // получить последние выданные займы
+        public ContentResult GetLastCredits() {
+
+          using(MICROCREDITEntities db = new MICROCREDITEntities()) {
+
+            var lastCreditList = db.POLD_CREDIT.Take(3).OrderByDescending(x => x.COUNTER).ToList();
+
+            return Content(JsonConvert.SerializeObject(lastCreditList), "application/json");
+
+          }
+
+        }
+
     }
 }
