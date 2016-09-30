@@ -676,9 +676,36 @@ namespace MICROCREDIT.NET.Controllers
 
           using(MICROCREDITEntities db = new MICROCREDITEntities()) {
 
-            var lastCreditList = db.POLD_CREDIT.Take(3).OrderByDescending(x => x.COUNTER).ToList();
+            var lastCreditList = db.POLD_CREDIT.Take(5).OrderByDescending(x => x.COUNTER).ToList();
 
             return Content(JsonConvert.SerializeObject(lastCreditList), "application/json");
+
+          }
+
+        }
+
+
+        // получить последние платежи
+        public ContentResult GetLastPayments() {
+
+          using(MICROCREDITEntities db = new MICROCREDITEntities()) {
+          
+            var lastPaymentList = 
+              (
+              from payment in db.POLD_PAYMENT
+              join doc in db.POLD_DOCUMENT on
+                new { FIO_COUNTER = (long)payment.FIO_COUNTER, FIO_LPUIN = (int)payment.FIO_LPUIN, ACTIVE = 1}
+                equals
+                new { FIO_COUNTER = (long)doc.FIO_COUNTER, FIO_LPUIN = (int)doc.FIO_LPUIN, ACTIVE = (int)doc.ACTIVE}
+              select
+                new {payment.DATA_PLATEJA,
+                     payment.COUNTER,
+                     payment.SUMMA_PLATEJA,
+                     FIO = doc.SURNAME + " " + doc.NAME + " " + doc.SECNAME}
+              )
+              .Take(5).OrderByDescending(x => x.COUNTER).ToList(); 
+
+              return Content(JsonConvert.SerializeObject(lastPaymentList), "application/json");
 
           }
 
