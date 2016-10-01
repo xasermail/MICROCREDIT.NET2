@@ -273,6 +273,35 @@
           <Property Name="PHONE_MOBILE" Type="varchar" MaxLength="50" />
           <Property Name="VR_OJID_SNYAT" Type="int" />
         </EntityType>
+        <EntityType Name="POLD_PLAN_REPORT">
+          <Key>
+            <PropertyRef Name="COUNTER" />
+          </Key>
+          <Property Name="COUNTER0" Type="bigint" />
+          <Property Name="LPUIN" Type="int" Nullable="false" />
+          <Property Name="STATE" Type="bigint" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="D_START" Type="smalldatetime" />
+          <Property Name="D_MODIF" Type="smalldatetime" />
+          <Property Name="D_FIN" Type="smalldatetime" />
+          <Property Name="D_FIN_STATUS" Type="tinyint" />
+          <Property Name="OPERATOR" Type="varchar" MaxLength="50" />
+          <Property Name="DATA" Type="smalldatetime" />
+          <Property Name="SPOSOB" Type="int" />
+          <Property Name="SOOB" Type="varchar" MaxLength="500" />
+          <Property Name="DATA_COUNTER" Type="bigint" />
+          <Property Name="DATA_LPUIN" Type="int" />
+          <Property Name="FIO_COUNTER" Type="bigint" />
+          <Property Name="FIO_LPUIN" Type="int" />
+          <Property Name="CREDIT_ITEM_INDEX" Type="int" />
+          <Property Name="REZ" Type="int" />
+          <Property Name="DATA_ZAV" Type="smalldatetime" />
+          <Property Name="SERVICE_ID" Type="bigint" />
+          <Property Name="SMS_TEMPLATE_COUNTER" Type="bigint" />
+          <Property Name="SMS_TEMPLATE_LPUIN" Type="int" />
+          <Property Name="PHONE_MOBILE" Type="varchar" MaxLength="50" />
+          <Property Name="VR_OJID_SNYAT" Type="int" />
+        </EntityType>
         <EntityType Name="POLD_PODOZR_TEL">
           <Key>
             <PropertyRef Name="COUNTER" />
@@ -1072,6 +1101,7 @@
           <EntitySet Name="POLD_ORG" EntityType="Self.POLD_ORG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="POLD_PAYMENT" EntityType="Self.POLD_PAYMENT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="POLD_PLAN" EntityType="Self.POLD_PLAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLD_PLAN_REPORT" EntityType="Self.POLD_PLAN_REPORT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="POLD_PODOZR_TEL" EntityType="Self.POLD_PODOZR_TEL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="POLD_RELATIVE" EntityType="Self.POLD_RELATIVE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="POLD_WORK" EntityType="Self.POLD_WORK" Schema="dbo" store:Type="Tables" />
@@ -1653,6 +1683,19 @@
           </FunctionImport>
           <FunctionImport Name="MC_BROWSE_FIO" ReturnType="Collection(MICROCREDITModel.MC_BROWSE_FIO_Result)" />
           <FunctionImport Name="MC_BROWSE_CURRENT_CREDIT" ReturnType="Collection(MICROCREDITModel.MC_BROWSE_CURRENT_CREDIT_Result)" />
+          <FunctionImport Name="MC_BROWSE_ORG1">
+            <Parameter Name="statOrg1" Mode="In" Type="Int32" />
+            <Parameter Name="statOrg2" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="POLD_PLAN_REPORT" EntityType="MICROCREDITModel.POLD_PLAN_REPORT" />
+          <FunctionImport Name="MC_BROWSE_ORG2">
+            <Parameter Name="statOrg1" Mode="In" Type="Int32" />
+            <Parameter Name="statOrg2" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MC_BROWSE_ORG3" ReturnType="Collection(MICROCREDITModel.MC_BROWSE_ORG_Result)">
+            <Parameter Name="statOrg1" Mode="In" Type="Int32" />
+            <Parameter Name="statOrg2" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="POLD_ADDRESS">
           <Key>
@@ -2480,6 +2523,59 @@
           <Property Type="Int32" Name="SUMMA_ZAYMA" Nullable="true" />
           <Property Type="String" Name="FIO" Nullable="true" MaxLength="58" />
         </ComplexType>
+        <EntityType Name="POLD_PLAN_REPORT">
+          <Key>
+            <PropertyRef Name="COUNTER" />
+          </Key>
+          <Property Name="COUNTER0" Type="Int64" />
+          <Property Name="LPUIN" Type="Int32" Nullable="false" />
+          <Property Name="STATE" Type="Int64" />
+          <Property Name="COUNTER" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="D_START" Type="DateTime" Precision="0" />
+          <Property Name="D_MODIF" Type="DateTime" Precision="0" />
+          <Property Name="D_FIN" Type="DateTime" Precision="0" />
+          <Property Name="D_FIN_STATUS" Type="Byte" />
+          <Property Name="OPERATOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DATA" Type="DateTime" Precision="0" />
+          <Property Name="SPOSOB" Type="Int32" />
+          <Property Name="SOOB" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DATA_COUNTER" Type="Int64" />
+          <Property Name="DATA_LPUIN" Type="Int32" />
+          <Property Name="FIO_COUNTER" Type="Int64" />
+          <Property Name="FIO_LPUIN" Type="Int32" />
+          <Property Name="CREDIT_ITEM_INDEX" Type="Int32" />
+          <Property Name="REZ" Type="Int32" />
+          <Property Name="DATA_ZAV" Type="DateTime" Precision="0" />
+          <Property Name="SERVICE_ID" Type="Int64" />
+          <Property Name="SMS_TEMPLATE_COUNTER" Type="Int64" />
+          <Property Name="SMS_TEMPLATE_LPUIN" Type="Int32" />
+          <Property Name="PHONE_MOBILE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VR_OJID_SNYAT" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="MC_BROWSE_ORG_Result">
+          <Property Type="Int64" Name="COUNTER" Nullable="false" />
+          <Property Type="Int64" Name="COUNTER0" Nullable="true" />
+          <Property Type="Int32" Name="LPUIN" Nullable="false" />
+          <Property Type="DateTime" Name="D_START" Nullable="true" Precision="16" />
+          <Property Type="DateTime" Name="D_MODIF" Nullable="true" Precision="16" />
+          <Property Type="DateTime" Name="D_FIN" Nullable="true" Precision="16" />
+          <Property Type="Byte" Name="D_FIN_STATUS" Nullable="true" />
+          <Property Type="String" Name="OPERATOR" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="D_BEG" Nullable="true" Precision="16" />
+          <Property Type="DateTime" Name="D_END" Nullable="true" Precision="16" />
+          <Property Type="Int32" Name="STAT_ORG" Nullable="true" />
+          <Property Type="String" Name="STAT_ORG_NAME" Nullable="true" MaxLength="50" />
+          <Property Type="Int64" Name="USER_COUNTER" Nullable="true" />
+          <Property Type="Int32" Name="USER_LPUIN" Nullable="true" />
+          <Property Type="String" Name="MSG" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="OTVET" Nullable="true" MaxLength="255" />
+          <Property Type="Int64" Name="FIO_COUNTER" Nullable="true" />
+          <Property Type="Int32" Name="FIO_LPUIN" Nullable="true" />
+          <Property Type="Int32" Name="CREDIT_ITEM_INDEX" Nullable="true" />
+          <Property Type="String" Name="USERNAME" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="FIO" Nullable="true" MaxLength="58" />
+          <Property Type="String" Name="NOMER_DOGOVORA" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3206,7 +3302,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="MC_BROWSE_ORG" FunctionName="MICROCREDITModel.Store.MC_BROWSE_ORG" />
           <FunctionImportMapping FunctionImportName="MC_BROWSE_PAYMENT" FunctionName="MICROCREDITModel.Store.MC_BROWSE_PAYMENT">
             <ResultMapping>
               <ComplexTypeMapping TypeName="MICROCREDITModel.MC_BROWSE_PAYMENT_Result">
@@ -3448,6 +3543,64 @@
                 <ScalarProperty Name="STATUS_NAME" ColumnName="STATUS_NAME" />
                 <ScalarProperty Name="SUMMA_ZAYMA" ColumnName="SUMMA_ZAYMA" />
                 <ScalarProperty Name="FIO" ColumnName="FIO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="POLD_PLAN_REPORT">
+            <EntityTypeMapping TypeName="MICROCREDITModel.POLD_PLAN_REPORT">
+              <MappingFragment StoreEntitySet="POLD_PLAN_REPORT">
+                <ScalarProperty Name="VR_OJID_SNYAT" ColumnName="VR_OJID_SNYAT" />
+                <ScalarProperty Name="PHONE_MOBILE" ColumnName="PHONE_MOBILE" />
+                <ScalarProperty Name="SMS_TEMPLATE_LPUIN" ColumnName="SMS_TEMPLATE_LPUIN" />
+                <ScalarProperty Name="SMS_TEMPLATE_COUNTER" ColumnName="SMS_TEMPLATE_COUNTER" />
+                <ScalarProperty Name="SERVICE_ID" ColumnName="SERVICE_ID" />
+                <ScalarProperty Name="DATA_ZAV" ColumnName="DATA_ZAV" />
+                <ScalarProperty Name="REZ" ColumnName="REZ" />
+                <ScalarProperty Name="CREDIT_ITEM_INDEX" ColumnName="CREDIT_ITEM_INDEX" />
+                <ScalarProperty Name="FIO_LPUIN" ColumnName="FIO_LPUIN" />
+                <ScalarProperty Name="FIO_COUNTER" ColumnName="FIO_COUNTER" />
+                <ScalarProperty Name="DATA_LPUIN" ColumnName="DATA_LPUIN" />
+                <ScalarProperty Name="DATA_COUNTER" ColumnName="DATA_COUNTER" />
+                <ScalarProperty Name="SOOB" ColumnName="SOOB" />
+                <ScalarProperty Name="SPOSOB" ColumnName="SPOSOB" />
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+                <ScalarProperty Name="OPERATOR" ColumnName="OPERATOR" />
+                <ScalarProperty Name="D_FIN_STATUS" ColumnName="D_FIN_STATUS" />
+                <ScalarProperty Name="D_FIN" ColumnName="D_FIN" />
+                <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+                <ScalarProperty Name="D_START" ColumnName="D_START" />
+                <ScalarProperty Name="COUNTER" ColumnName="COUNTER" />
+                <ScalarProperty Name="STATE" ColumnName="STATE" />
+                <ScalarProperty Name="LPUIN" ColumnName="LPUIN" />
+                <ScalarProperty Name="COUNTER0" ColumnName="COUNTER0" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="MC_BROWSE_ORG3" FunctionName="MICROCREDITModel.Store.MC_BROWSE_ORG">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MICROCREDITModel.MC_BROWSE_ORG_Result">
+                <ScalarProperty Name="COUNTER" ColumnName="COUNTER" />
+                <ScalarProperty Name="COUNTER0" ColumnName="COUNTER0" />
+                <ScalarProperty Name="LPUIN" ColumnName="LPUIN" />
+                <ScalarProperty Name="D_START" ColumnName="D_START" />
+                <ScalarProperty Name="D_MODIF" ColumnName="D_MODIF" />
+                <ScalarProperty Name="D_FIN" ColumnName="D_FIN" />
+                <ScalarProperty Name="D_FIN_STATUS" ColumnName="D_FIN_STATUS" />
+                <ScalarProperty Name="OPERATOR" ColumnName="OPERATOR" />
+                <ScalarProperty Name="D_BEG" ColumnName="D_BEG" />
+                <ScalarProperty Name="D_END" ColumnName="D_END" />
+                <ScalarProperty Name="STAT_ORG" ColumnName="STAT_ORG" />
+                <ScalarProperty Name="STAT_ORG_NAME" ColumnName="STAT_ORG_NAME" />
+                <ScalarProperty Name="USER_COUNTER" ColumnName="USER_COUNTER" />
+                <ScalarProperty Name="USER_LPUIN" ColumnName="USER_LPUIN" />
+                <ScalarProperty Name="MSG" ColumnName="MSG" />
+                <ScalarProperty Name="OTVET" ColumnName="OTVET" />
+                <ScalarProperty Name="FIO_COUNTER" ColumnName="FIO_COUNTER" />
+                <ScalarProperty Name="FIO_LPUIN" ColumnName="FIO_LPUIN" />
+                <ScalarProperty Name="CREDIT_ITEM_INDEX" ColumnName="CREDIT_ITEM_INDEX" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="NOMER_DOGOVORA" ColumnName="NOMER_DOGOVORA" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

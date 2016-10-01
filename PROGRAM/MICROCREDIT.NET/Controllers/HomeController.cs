@@ -676,8 +676,9 @@ namespace MICROCREDIT.NET.Controllers
 
           using(MICROCREDITEntities db = new MICROCREDITEntities()) {
 
-            var lastCreditList = db.POLD_CREDIT
-            .Join(db.POLD_DOCUMENT,
+            var lastCreditList = db.POLD_CREDIT.Where(n => n.D_FIN == null)
+                                   .OrderByDescending(x => x.COUNTER).Take(5)
+            .Join(db.POLD_DOCUMENT.Where(n => n.D_FIN == null),
               credit => new {FIO_COUNTER = (long)credit.FIO_COUNTER, FIO_LPUIN = (int)credit.FIO_LPUIN, ACTIVE = 1},
               doc => new {FIO_COUNTER = (long)doc.FIO_COUNTER, FIO_LPUIN = (int)doc.FIO_LPUIN, ACTIVE = (int)doc.ACTIVE}
               ,(credit, doc) => new {
@@ -685,7 +686,7 @@ namespace MICROCREDIT.NET.Controllers
                   credit.DATA_ZAYMA,
                   credit.SUMMA_K_OPLATE,
                   FIO = doc.SURNAME + " " + doc.NAME + " " + doc.SECNAME})
-            .Take(5).OrderByDescending(x => x.COUNTER).ToList();
+            .OrderByDescending(x => x.COUNTER).ToList();
 
             return Content(JsonConvert.SerializeObject(lastCreditList), "application/json");
 
@@ -701,8 +702,9 @@ namespace MICROCREDIT.NET.Controllers
           
             var lastPaymentList = 
               (
-              from payment in db.POLD_PAYMENT.Where(n => n.VID_PLATEJA == 1)
-              join doc in db.POLD_DOCUMENT on
+              from payment in db.POLD_PAYMENT.Where(n => n.VID_PLATEJA == 1 && n.D_FIN == null)
+                                .OrderByDescending(x => x.COUNTER).Take(5)
+              join doc in db.POLD_DOCUMENT.Where(n => n.D_FIN == null) on
                 new { FIO_COUNTER = (long)payment.FIO_COUNTER, FIO_LPUIN = (int)payment.FIO_LPUIN, ACTIVE = 1}
                 equals
                 new { FIO_COUNTER = (long)doc.FIO_COUNTER, FIO_LPUIN = (int)doc.FIO_LPUIN, ACTIVE = (int)doc.ACTIVE}
@@ -712,7 +714,7 @@ namespace MICROCREDIT.NET.Controllers
                      payment.SUMMA_PLATEJA,
                      FIO = doc.SURNAME + " " + doc.NAME + " " + doc.SECNAME}
               )
-              .Take(5).OrderByDescending(x => x.COUNTER).ToList(); 
+              .ToList().OrderByDescending(x => x.COUNTER); 
 
               return Content(JsonConvert.SerializeObject(lastPaymentList), "application/json");
 
@@ -733,6 +735,25 @@ namespace MICROCREDIT.NET.Controllers
            
           }
 
+        }
+
+
+        // получить сегодняшние запланированные задачи органайзера
+        public ContentResult GetCurrentOrg() {
+
+          using(MICROCREDITEntities db = new MICROCREDITEntities()) {
+
+            IEnumerable<MC_BROWSE_ORG_Result> r;
+            r = db.Database.SqlQuery<MC_BROWSE_ORG_Result>(
+              "DECLARE @STAT_ORG_OJID int = 1;" +
+              "DECLARE @STAT_ORG_AKTIV int = 2;" +
+              "exec dbo.MC_BROWSE_ORG @statOrg1 = @STAT_ORG_OJID, @statOrg2 = @STAT_ORG_AKTIV;"
+            );
+
+            return Content(JsonConvert.SerializeObject(r), "application/json");
+
+          }
+          
         }
 
     }

@@ -73,7 +73,7 @@
     <!-- Выданные займы и Платежи -->
     <div class="row">
       <div id="lastCredits" class="col-md-6">
-        <table class="table table-condensed">
+        <table class="table table-condensed table-hover">
           <thead>
             <tr>
               <th>Дата займа</th>
@@ -92,7 +92,7 @@
       </div>
 
       <div id="lastPayments" class="col-md-6">
-        <table class="table table-condensed">
+        <table class="table table-condensed table-hover">
           <thead>
             <tr>
               <th>Дата платежа</th>
@@ -117,7 +117,7 @@
     <div class="row">
 
       <div id="currentCredits" class="col-md-6">
-        <table class="table table-condensed">
+        <table class="table table-condensed table-hover">
           <thead>
             <tr>
               <th>Статус</th>
@@ -130,6 +130,25 @@
               <td>{{row.STATUS_NAME}}</td>
               <td>{{row.SUMMA_ZAYMA | currency}}</td>
               <td>{{row.FIO}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="currentOrg" class="col-md-6">
+        <table class="table table-condensed table-hover">
+          <thead>
+            <tr>
+              <th>Статус</th>
+              <th>Дата начала</th>
+              <th>Событие</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="row in currentOrg">
+              <td>{{row.STAT_ORG_NAME}}</td>
+              <td>{{row.D_BEG | date:'dd.MM.yyyy'}}</td>
+              <td>{{row.MSG}}</td>
             </tr>
           </tbody>
         </table>

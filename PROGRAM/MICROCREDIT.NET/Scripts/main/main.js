@@ -21,4 +21,9 @@ myCtrl = myApp.controller("myCtrl", function myCtrl($scope, $http) {
     $scope.currentCredits = response.data;
   });
 
+  // события органайзера на сегодня
+  $http.get("/Home/GetCurrentOrg/").then(function getCurrentOrg(response) {
+    $scope.currentOrg = response.data;
+  });
+
 });

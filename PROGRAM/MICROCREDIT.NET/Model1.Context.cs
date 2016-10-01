@@ -47,6 +47,7 @@ namespace MICROCREDIT.NET
         public DbSet<POLS_AK_SOST_ZAYM> POLS_AK_SOST_ZAYM { get; set; }
         public DbSet<POLS_LOG> POLS_LOG { get; set; }
         public DbSet<POLS_SYSTEM> POLS_SYSTEM { get; set; }
+        public DbSet<POLD_PLAN_REPORT> POLD_PLAN_REPORT { get; set; }
     
         public virtual ObjectResult<Nullable<int>> MC_AK_SOST_ZAYM()
         {
@@ -2090,6 +2091,45 @@ namespace MICROCREDIT.NET
         public virtual ObjectResult<MC_BROWSE_CURRENT_CREDIT_Result> MC_BROWSE_CURRENT_CREDIT()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MC_BROWSE_CURRENT_CREDIT_Result>("MC_BROWSE_CURRENT_CREDIT");
+        }
+    
+        public virtual int MC_BROWSE_ORG1(Nullable<int> statOrg1, Nullable<int> statOrg2)
+        {
+            var statOrg1Parameter = statOrg1.HasValue ?
+                new ObjectParameter("statOrg1", statOrg1) :
+                new ObjectParameter("statOrg1", typeof(int));
+    
+            var statOrg2Parameter = statOrg2.HasValue ?
+                new ObjectParameter("statOrg2", statOrg2) :
+                new ObjectParameter("statOrg2", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MC_BROWSE_ORG1", statOrg1Parameter, statOrg2Parameter);
+        }
+    
+        public virtual int MC_BROWSE_ORG2(Nullable<int> statOrg1, Nullable<int> statOrg2)
+        {
+            var statOrg1Parameter = statOrg1.HasValue ?
+                new ObjectParameter("statOrg1", statOrg1) :
+                new ObjectParameter("statOrg1", typeof(int));
+    
+            var statOrg2Parameter = statOrg2.HasValue ?
+                new ObjectParameter("statOrg2", statOrg2) :
+                new ObjectParameter("statOrg2", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MC_BROWSE_ORG2", statOrg1Parameter, statOrg2Parameter);
+        }
+    
+        public virtual ObjectResult<MC_BROWSE_ORG_Result> MC_BROWSE_ORG3(Nullable<int> statOrg1, Nullable<int> statOrg2)
+        {
+            var statOrg1Parameter = statOrg1.HasValue ?
+                new ObjectParameter("statOrg1", statOrg1) :
+                new ObjectParameter("statOrg1", typeof(int));
+    
+            var statOrg2Parameter = statOrg2.HasValue ?
+                new ObjectParameter("statOrg2", statOrg2) :
+                new ObjectParameter("statOrg2", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MC_BROWSE_ORG_Result>("MC_BROWSE_ORG3", statOrg1Parameter, statOrg2Parameter);
         }
     }
 }
