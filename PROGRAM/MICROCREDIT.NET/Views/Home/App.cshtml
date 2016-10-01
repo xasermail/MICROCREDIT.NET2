@@ -1,0 +1,90 @@
+﻿@{
+  ViewBag.Title = "Main";
+}
+
+@section head {
+  <style>
+    body {
+      position: relative;
+    }
+
+    .left-menu {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 300px;
+      overflow: auto;
+    }
+
+    .main-content {
+      margin-left: 300px;
+    }
+  </style>
+}
+
+<div class="main-container" ng-app="myApp" ng-controller="appCtrl">
+  <div class="left-menu">
+    <ul ng-click="leftMenuClickHandler($event)" id="leftMenuTopUl">
+      <li data-div-ng-controller="mainCtrl">Главная</li>
+      <li>
+        Данные
+        <ul>
+          <li data-div-ng-controller="reestrKlientovCtrl">Реестр клиентов</li>
+          <li>Касса</li>
+        </ul>
+      </li>
+      <li>
+        Справочники
+        <ul>
+          <li>Шаблоны условий кредитования</li>
+          <li>Редактирование справочников</li>
+          <li>Места реализации</li>
+        </ul>
+      </li>
+      <li>
+        Отчеты
+        <ul>
+          <li>Отчет по платежам</li>
+          <li>Движение касс</li>
+          <li>Отчет кассира (кассовая книга)</li>
+          <li>Отчет по сотрудникам</li>
+          <li>Отчет по кассам</li>
+          <li>Отчет по СМС/звонкам</li>
+          <li>Операции за период</li>
+          <li>Статистика за период</li>
+          <li>Статистика по закрытым займам</li>
+        </ul>
+      </li>
+      <li>
+        Сервис
+        <ul>
+          <li>Настройки</li>
+          <li>Разграничение прав</li>
+          <li>Перечитать права</li>
+          <li>Восстановить подключение</li>
+          <li>Актуализировать состояние займов</li>
+          <li>Сделать резервную копию БД</li>
+          <li>Сервис информирования клиентов (СИК)</li>
+          <li>Органайзер</li>
+          <li>Подозрительные телефонные номера</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="main-content container-fluid">
+
+    @Html.Partial("Main")
+    @Html.Partial("ReestrKlientov")
+    @Html.Partial("Form")
+
+  </div>
+</div>
+
+
+@section scripts {
+<script src="~/Scripts/ng-controllers/appCtrl.js"></script>
+<script src="~/Scripts/ng-controllers/mainCtrl.js"></script>
+<script src="~/Scripts/ng-controllers/reestrKlientovCtrl.js"></script>
+<script src="~/Scripts/ng-controllers/formCtrl.js"></script>
+}

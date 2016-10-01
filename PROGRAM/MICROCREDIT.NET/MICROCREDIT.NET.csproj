@@ -1128,7 +1128,10 @@
     <Content Include="app\appModule.js" />
     <Content Include="app\doc\docService.js" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\main\main.js" />
+    <Content Include="Scripts\ng-controllers\appCtrl.js" />
+    <Content Include="Scripts\ng-controllers\formCtrl.js" />
+    <Content Include="Scripts\ng-controllers\mainCtrl.js" />
+    <Content Include="Scripts\ng-controllers\reestrKlientovCtrl.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1144,10 +1147,13 @@
     <Content Include="Views\Home\Start.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Main.cshtml" />
+    <Content Include="Views\Home\App.cshtml" />
+    <Content Include="Views\Home\ReestrKlientov.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\main\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

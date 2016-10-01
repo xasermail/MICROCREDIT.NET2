@@ -1,0 +1,132 @@
+﻿<style>
+  #reestrKlientov {
+    height: 100vh;
+  }
+
+  #reestrKlientovFilter {
+    height: 15vh;
+  }
+
+  #reestrKlientovResults {
+    height: 85vh;
+    overflow: auto;
+  }
+</style>
+
+<!-- Реестр клиентов -->
+<div ng-controller="reestrKlientovCtrl" ng-show="reestrKlientovCtrlShow" id="reestrKlientov">
+  
+  <!-- Кнопки и другие элементы для задания фильтра -->
+  <div id="reestrKlientovFilter">
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn btn-default" ng-click="showForm()">Добавить</button>
+        <button class="btn btn-default">Редактировать</button>
+        <button class="btn btn-default">Удалить</button>
+        <button class="btn btn-default">Просмотр в новом окне</button>
+        <button class="btn btn-default">Обновить</button>
+        <button class="btn btn-default">Краткая информация</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="edReestrKlientovFilterFIO">ФИО</label>
+            <input type="text" class="form-control" id="edReestrKlientovFilterFIO" 
+                   placeholder="Иванов Иван Иванович"
+                   ng-model="fio">
+          </div>
+          <div class="form-group">
+            <label for="edReestrKlientovFilterPhone"><span>или </span>Телефон</label>
+            <input type="text" class="form-control" id="edReestrKlientovFilterPhone"
+                   placeholder="81231231234"
+                   ng-model="phone">
+          </div>
+          <button class="btn btn-default" ng-click="btnPoiskClickHandler()">Поиск</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-inline">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="vse">
+              Все
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="neZakr">
+              Не закрыт
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="posl">
+              Последний
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /кнопки и другие элементы для задания фильтра -->
+
+  <!-- Таблица с результатами -->
+  <div class="row">
+    <div id="reestrKlientovResults" class="col-md-12">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Дата рождения</th>
+            <th>Актив. займ</th>
+            <th>2</th>
+            <th>1</th>
+            <th>0</th>
+            <th>Дата возврата</th>
+            <th>Просрочен</th>
+            <th>Статус</th>
+            <th>Отделение</th>
+            <th>Оператор</th>
+            <th>Сумма займа</th>
+            <th>Комм. займа</th>
+            <th>Дата создания займа</th>
+            <th>Остаток по займу</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="row in reestrKlientovResults">
+            <td>{{row.SURNAME}}</td>
+            <td>{{row.NAME}}</td>
+            <td>{{row.SECNAME}}</td>
+            <td>{{row.BIRTHDAY | date:'dd.MM.yyyy'}}</td>
+            <td>{{row.AKTIV_ZAYM}}</td>
+            <td>{{row.DN_DO_VOZVR_2}}</td>
+            <td>{{row.DN_DO_VOZVR_1}}</td>
+            <td>{{row.DN_DO_VOZVR_0}}</td>
+            <td>{{row.DATA_VOZVRATA | date:'dd.MM.yyyy'}}</td>
+            <td>{{row.PROSROCHEN}}</td>
+            <td>{{row.STAT}}</td>
+            <td>{{row.KOD_OTDELENIYA}}</td>
+            <td>{{row.OPERATOR_START}}</td>
+            <td>{{row.SUMMA_ZAYMA | currency}}</td>
+            <td>{{row.COMMENT}}</td>
+            <td>{{row.D_START_CREDIT | date:'dd.MM.yyyy'}}</td>
+            <td>{{row.OSTATOK_PO_ZAYMU | currency}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- /таблица с результатами -->
+
+</div>
+<!-- /реестр клиентов -->

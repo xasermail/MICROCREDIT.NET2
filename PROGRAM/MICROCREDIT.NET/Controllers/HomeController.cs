@@ -157,8 +157,10 @@ namespace MICROCREDIT.NET.Controllers
 
 
 
-        public ActionResult RequeryFio(int iCounterFio = -1) {
-          edFio.Text = "АБРАМОВ";
+        public ContentResult RequeryFio(string fio, string phone, int iCounterFio = -1) {
+
+          edFio.Text = fio;
+          edPhone.Text = phone;
           const string TAG_NAME_STAT = "STAT";
           const string TAG_NAME_FIO = "FIO";
           const string TAG_NAME_KOD_OTDELENIYA = "KOD_OTDELENIYA";
@@ -236,7 +238,7 @@ namespace MICROCREDIT.NET.Controllers
               )
             );
             ReestrKlientovForm.BringToFront();
-            return Json(new {error = "error"}, JsonRequestBehavior.AllowGet);
+            return Content(JsonConvert.SerializeObject(new {error = "error"}), "application/json");
 
           } else {
             ErrorListForm.RemoveError(edFio, String.Format(
@@ -260,7 +262,7 @@ namespace MICROCREDIT.NET.Controllers
              )
             );
             ReestrKlientovForm.BringToFront();
-            return Json(new {error = "error"}, JsonRequestBehavior.AllowGet);
+            return Content(JsonConvert.SerializeObject(new {error = "error"}), "application/json");
 
           } else {
             ErrorListForm.RemoveError(edPhone, String.Format(
@@ -566,7 +568,8 @@ namespace MICROCREDIT.NET.Controllers
           // выполнение сформированного запроса
           // рву соединение после выполнения
           var r1 = db.Database.SqlQuery<MC_BROWSE_FIO_Result>(s);
-          return Json(new {total = 1, page = 1, record = r1.Count(), rows = r1}, JsonRequestBehavior.AllowGet);
+
+          return Content(JsonConvert.SerializeObject(r1), "application/json");
 
           } finally {
             // Screen.Cursor := crDefault;
@@ -664,7 +667,7 @@ namespace MICROCREDIT.NET.Controllers
         }
 
 
-        public ActionResult Main() {
+        public ActionResult App() {
 
           return View();
 

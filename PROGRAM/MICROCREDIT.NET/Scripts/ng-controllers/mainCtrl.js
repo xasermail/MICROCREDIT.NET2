@@ -1,10 +1,7 @@
 ﻿"use strict";
-var myApp;
-var myCtrl;
-myApp = angular.module("myApp", []);
 
 // контроллер
-myCtrl = myApp.controller("myCtrl", function myCtrl($scope, $http) {
+mainCtrl = myApp.controller("mainCtrl", function mainCtrl($scope, $http) {
 
   // последние кредиты
   $http.get("/Home/GetLastCredits/").then(function getLastCredits(response) {
@@ -17,7 +14,7 @@ myCtrl = myApp.controller("myCtrl", function myCtrl($scope, $http) {
   });
 
   // сегодняшние займы
-  $http.get("/Home/GetCurrentCredits/").then(function getCurrentCreditss(response) {
+  $http.get("/Home/GetCurrentCredits/").then(function getCurrentCredits(response) {
     $scope.currentCredits = response.data;
   });
 

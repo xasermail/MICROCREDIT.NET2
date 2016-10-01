@@ -1,167 +1,92 @@
-﻿@{
-    ViewBag.Title = "Main";
-}
-
-@section head {
-<style>
-  body {
-    position: relative;
-  }
-
-  .left-menu {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 300px;
-    overflow: auto;
-  }
-
-  .main-content {
-    margin-left: 300px;
-    height: 1500px;
-  }
-</style>
-}
-
-<div class="main-container">
-  <div class="left-menu">
-    <ul>
-      <li>Данные
-        <ul>
-          <li>Реестр клиентов</li>
-          <li>Касса</li>
-        </ul>
-      </li>
-      <li>Справочники
-        <ul>
-          <li>Шаблоны условий кредитования</li>
-          <li>Редактирование справочников</li>
-          <li>Места реализации</li>
-        </ul>
-      </li>
-      <li>Отчеты
-        <ul>
-          <li>Отчет по платежам</li>
-          <li>Движение касс</li>
-          <li>Отчет кассира (кассовая книга)</li>
-          <li>Отчет по сотрудникам</li>
-          <li>Отчет по кассам</li>
-          <li>Отчет по СМС/звонкам</li>
-          <li>Операции за период</li>
-          <li>Статистика за период</li>
-          <li>Статистика по закрытым займам</li>
-        </ul>
-      </li>
-      <li>Сервис
-        <ul>
-          <li>Настройки</li>
-          <li>Разграничение прав</li>
-          <li>Перечитать права</li>
-          <li>Восстановить подключение</li>
-          <li>Актуализировать состояние займов</li>
-          <li>Сделать резервную копию БД</li>
-          <li>Сервис информирования клиентов (СИК)</li>
-          <li>Органайзер</li>
-          <li>Подозрительные телефонные номера</li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-  <div class="main-content container-fluid" ng-app="myApp" ng-controller="myCtrl">
-    
-    <!-- Выданные займы и Платежи -->
-    <div class="row">
-      <div id="lastCredits" class="col-md-6">
-        <table class="table table-condensed table-hover">
-          <thead>
-            <tr>
-              <th>Дата займа</th>
-              <th>Сумма к оплате</th>
-              <th>Клиент</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="row in lastCredits">
-              <td>{{row.DATA_ZAYMA | date:'dd.MM.yyyy'}}</td>
-              <td>{{row.SUMMA_K_OPLATE | currency}}</td>
-              <td>{{row.FIO}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div id="lastPayments" class="col-md-6">
-        <table class="table table-condensed table-hover">
-          <thead>
-            <tr>
-              <th>Дата платежа</th>
-              <th>Сумма платежа</th>
-              <th>Клиент</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="row in lastPayments">
-              <td>{{row.DATA_PLATEJA | date:'dd.MM.yyyy'}}</td>
-              <td>{{row.SUMMA_PLATEJA | currency}}</td>
-              <td>{{row.FIO}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
+﻿<!-- Главная -->
+<div ng-controller="mainCtrl" ng-show="mainCtrlShow">
+  <!-- Выданные займы и Платежи -->
+  <div class="row">
+    <div id="lastCredits" class="col-md-6">
+      <table class="table table-condensed table-hover">
+        <thead>
+          <tr>
+            <th>Дата займа</th>
+            <th>Сумма к оплате</th>
+            <th>Клиент</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="row in lastCredits">
+            <td>{{row.DATA_ZAYMA | date:'dd.MM.yyyy'}}</td>
+            <td>{{row.SUMMA_K_OPLATE | currency}}</td>
+            <td>{{row.FIO}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <!-- /выданные займы и платежи -->
 
-    <!-- Сегодняшние займы и органайзер -->
-    <div class="row">
-
-      <div id="currentCredits" class="col-md-6">
-        <table class="table table-condensed table-hover">
-          <thead>
-            <tr>
-              <th>Статус</th>
-              <th>Сумма займа</th>
-              <th>Клиент</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="row in currentCredits">
-              <td>{{row.STATUS_NAME}}</td>
-              <td>{{row.SUMMA_ZAYMA | currency}}</td>
-              <td>{{row.FIO}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div id="currentOrg" class="col-md-6">
-        <table class="table table-condensed table-hover">
-          <thead>
-            <tr>
-              <th>Статус</th>
-              <th>Дата начала</th>
-              <th>Событие</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="row in currentOrg">
-              <td>{{row.STAT_ORG_NAME}}</td>
-              <td>{{row.D_BEG | date:'dd.MM.yyyy'}}</td>
-              <td>{{row.MSG}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
+    <div id="lastPayments" class="col-md-6">
+      <table class="table table-condensed table-hover">
+        <thead>
+          <tr>
+            <th>Дата платежа</th>
+            <th>Сумма платежа</th>
+            <th>Клиент</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="row in lastPayments">
+            <td>{{row.DATA_PLATEJA | date:'dd.MM.yyyy'}}</td>
+            <td>{{row.SUMMA_PLATEJA | currency}}</td>
+            <td>{{row.FIO}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <!-- /сегодняшние займы и органайзер -->
-
 
   </div>
+  <!-- /выданные займы и платежи -->
+  <!-- Сегодняшние займы и органайзер -->
+  <div class="row">
+
+    <div id="currentCredits" class="col-md-6">
+      <table class="table table-condensed table-hover">
+        <thead>
+          <tr>
+            <th>Статус</th>
+            <th>Сумма займа</th>
+            <th>Клиент</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="row in currentCredits">
+            <td>{{row.STATUS_NAME}}</td>
+            <td>{{row.SUMMA_ZAYMA | currency}}</td>
+            <td>{{row.FIO}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="currentOrg" class="col-md-6">
+      <table class="table table-condensed table-hover">
+        <thead>
+          <tr>
+            <th>Статус</th>
+            <th>Дата начала</th>
+            <th>Событие</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="row in currentOrg">
+            <td>{{row.STAT_ORG_NAME}}</td>
+            <td>{{row.D_BEG | date:'dd.MM.yyyy'}}</td>
+            <td>{{row.MSG}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <!-- /сегодняшние займы и органайзер -->
+
 </div>
+<!-- /главная -->
 
 
-@section scripts {
-<script src="~/Scripts/main/main.js"></script>
-}
