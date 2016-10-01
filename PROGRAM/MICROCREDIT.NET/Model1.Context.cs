@@ -2086,5 +2086,10 @@ namespace MICROCREDIT.NET
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MC_BROWSE_FIO_Result>("MC_BROWSE_FIO");
         }
+    
+        public virtual ObjectResult<MC_BROWSE_CURRENT_CREDIT_Result> MC_BROWSE_CURRENT_CREDIT()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MC_BROWSE_CURRENT_CREDIT_Result>("MC_BROWSE_CURRENT_CREDIT");
+        }
     }
 }

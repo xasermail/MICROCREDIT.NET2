@@ -161,6 +161,9 @@
     <Compile Include="MC_BROWSE_CREDIT_TEMPLATE_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="MC_BROWSE_CURRENT_CREDIT_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="MC_BROWSE_DOCUMENT_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

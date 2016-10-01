@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="60f1db234c12473d9d89365c283e6999" Name="Diagram1" ZoomLevel="64">
+      <Diagram DiagramId="60f1db234c12473d9d89365c283e6999" Name="Diagram1" ZoomLevel="61">
         <EntityTypeShape EntityType="MICROCREDITModel.POLD_ADDRESS" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MICROCREDITModel.POLD_COMMENT" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MICROCREDITModel.POLD_CREDIT" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />

@@ -68,45 +68,75 @@
       </li>
     </ul>
   </div>
-  <div class="main-content" ng-app="myApp" ng-controller="myCtrl">
+  <div class="main-content container-fluid" ng-app="myApp" ng-controller="myCtrl">
     
-    <div id="lastCredits" class="col-md-6">
-      <table class="table table-condensed">
-        <thead>
-          <tr>
-            <th>Дата займа</th>
-            <th>Срок займа</th>
-            <th>Клиент</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="row in lastCredits">
-            <td>{{row.DATA_ZAYMA | date:'dd.MM.yyyy'}}</td>
-            <td>{{row.SUMMA_K_OPLATE | currency}}</td>
-            <td>{{row.FIO}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <!-- Выданные займы и Платежи -->
+    <div class="row">
+      <div id="lastCredits" class="col-md-6">
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th>Дата займа</th>
+              <th>Сумма к оплате</th>
+              <th>Клиент</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="row in lastCredits">
+              <td>{{row.DATA_ZAYMA | date:'dd.MM.yyyy'}}</td>
+              <td>{{row.SUMMA_K_OPLATE | currency}}</td>
+              <td>{{row.FIO}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-    <div id="lastPayments" class="col-md-6">
-      <table class="table table-condensed">
-        <thead>
-          <tr>
-            <th>Дата платежа</th>
-            <th>Сумма платежа</th>
-            <th>Клиент</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="row in lastPayments">
-            <td>{{row.DATA_PLATEJA | date:'dd.MM.yyyy'}}</td>
-            <td>{{row.SUMMA_PLATEJA | currency}}</td>
-            <td>{{row.FIO}}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div id="lastPayments" class="col-md-6">
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th>Дата платежа</th>
+              <th>Сумма платежа</th>
+              <th>Клиент</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="row in lastPayments">
+              <td>{{row.DATA_PLATEJA | date:'dd.MM.yyyy'}}</td>
+              <td>{{row.SUMMA_PLATEJA | currency}}</td>
+              <td>{{row.FIO}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
     </div>
+    <!-- /выданные займы и платежи -->
+
+    <!-- Сегодняшние займы и органайзер -->
+    <div class="row">
+
+      <div id="currentCredits" class="col-md-6">
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th>Статус</th>
+              <th>Сумма займа</th>
+              <th>Клиент</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="row in currentCredits">
+              <td>{{row.STATUS_NAME}}</td>
+              <td>{{row.SUMMA_ZAYMA | currency}}</td>
+              <td>{{row.FIO}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <!-- /сегодняшние займы и органайзер -->
 
 
   </div>

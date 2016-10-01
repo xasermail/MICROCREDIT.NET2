@@ -720,5 +720,20 @@ namespace MICROCREDIT.NET.Controllers
 
         }
 
+
+        // получить сегоднящние оформленные займы
+        public ContentResult GetCurrentCredits() {
+
+          using(MICROCREDITEntities db = new MICROCREDITEntities()) {
+
+            IEnumerable<MC_BROWSE_CURRENT_CREDIT_Result> r;
+            r = db.Database.SqlQuery<MC_BROWSE_CURRENT_CREDIT_Result>("dbo.MC_BROWSE_CURRENT_CREDIT;")
+              .ToList<MC_BROWSE_CURRENT_CREDIT_Result>();
+            return Content(JsonConvert.SerializeObject(r), "application/json");
+           
+          }
+
+        }
+
     }
 }

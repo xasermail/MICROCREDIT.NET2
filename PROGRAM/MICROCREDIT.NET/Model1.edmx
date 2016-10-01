@@ -4,28 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MICROCREDITModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="MICROCREDITModelStoreContainer">
-          <EntitySet Name="POLD_ADDRESS" EntityType="MICROCREDITModel.Store.POLD_ADDRESS" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLD_COMMENT" EntityType="MICROCREDITModel.Store.POLD_COMMENT" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLD_CREDIT" EntityType="MICROCREDITModel.Store.POLD_CREDIT" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLD_DOCUMENT" EntityType="MICROCREDITModel.Store.POLD_DOCUMENT" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLD_FIO" EntityType="MICROCREDITModel.Store.POLD_FIO" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLD_MEDICAL" EntityType="MICROCREDITModel.Store.POLD_MEDICAL" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLD_ORG" EntityType="MICROCREDITModel.Store.POLD_ORG" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLD_PAYMENT" EntityType="MICROCREDITModel.Store.POLD_PAYMENT" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLD_PLAN" EntityType="MICROCREDITModel.Store.POLD_PLAN" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLD_PODOZR_TEL" EntityType="MICROCREDITModel.Store.POLD_PODOZR_TEL" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLD_RELATIVE" EntityType="MICROCREDITModel.Store.POLD_RELATIVE" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLD_WORK" EntityType="MICROCREDITModel.Store.POLD_WORK" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLM_CREDIT_TEMPLATE" EntityType="MICROCREDITModel.Store.POLM_CREDIT_TEMPLATE" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLM_HOLIDAYS" EntityType="MICROCREDITModel.Store.POLM_HOLIDAYS" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLM_STAT_ORG" EntityType="MICROCREDITModel.Store.POLM_STAT_ORG" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLM_VID_PLATEJA" EntityType="MICROCREDITModel.Store.POLM_VID_PLATEJA" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLS_AK_SOST_ZAYM" EntityType="MICROCREDITModel.Store.POLS_AK_SOST_ZAYM" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLS_LOG" EntityType="MICROCREDITModel.Store.POLS_LOG" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="POLS_SYSTEM" EntityType="MICROCREDITModel.Store.POLS_SYSTEM" store:Type="Tables" Schema="dbo" />
-        </EntityContainer>
+    <Schema Namespace="MICROCREDITModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="POLD_ADDRESS">
           <Key>
             <PropertyRef Name="COUNTER" />
@@ -33,7 +12,7 @@
           <Property Name="COUNTER0" Type="bigint" />
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -80,7 +59,7 @@
           <Property Name="COUNTER0" Type="bigint" />
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -97,7 +76,7 @@
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="ITEM_INDEX" Type="int" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -141,7 +120,7 @@
           <Property Name="COUNTER0" Type="bigint" />
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -173,7 +152,7 @@
           <Property Name="COUNTER0" Type="bigint" />
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -187,7 +166,7 @@
           <Property Name="COUNTER0" Type="bigint" />
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -219,7 +198,7 @@
           <Property Name="COUNTER0" Type="bigint" />
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -244,7 +223,7 @@
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="ITEM_INDEX" Type="int" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -272,7 +251,7 @@
           <Property Name="COUNTER0" Type="bigint" />
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -301,7 +280,7 @@
           <Property Name="COUNTER0" Type="bigint" />
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -320,7 +299,7 @@
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="ITEM_INDEX" Type="int" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -346,7 +325,7 @@
           <Property Name="COUNTER0" Type="bigint" />
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -401,7 +380,7 @@
           <Property Name="COUNTER0" Type="bigint" />
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -427,7 +406,7 @@
           <Property Name="COUNTER0" Type="bigint" />
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -442,7 +421,7 @@
           <Property Name="COUNTER0" Type="bigint" />
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -457,7 +436,7 @@
           <Property Name="COUNTER0" Type="bigint" />
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -473,7 +452,7 @@
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="ITEM_INDEX" Type="int" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -507,7 +486,7 @@
           <Property Name="COUNTER0" Type="bigint" />
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -523,7 +502,7 @@
           <Property Name="LPUIN" Type="int" Nullable="false" />
           <Property Name="ITEM_INDEX" Type="int" />
           <Property Name="STATE" Type="bigint" />
-          <Property Name="COUNTER" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="COUNTER" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="D_START" Type="smalldatetime" />
           <Property Name="D_MODIF" Type="smalldatetime" />
           <Property Name="D_FIN" Type="smalldatetime" />
@@ -564,6 +543,7 @@
           <Parameter Name="lpuin_fio" Type="int" Mode="In" />
         </Function>
         <Function Name="MC_BROWSE_CREDIT_TEMPLATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MC_BROWSE_CURRENT_CREDIT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="MC_BROWSE_DOCUMENT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="counter0_fio" Type="bigint" Mode="In" />
           <Parameter Name="lpuin_fio" Type="int" Mode="In" />
@@ -629,7 +609,7 @@
           <Parameter Name="counter0_fio" Type="bigint" Mode="In" />
           <Parameter Name="lpuin_fio" Type="int" Mode="In" />
         </Function>
-        <Function Name="MC_NUM_PHARASE" ReturnType="varchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="MC_NUM_PHARASE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
           <Parameter Name="Num" Type="bigint" Mode="In" />
           <Parameter Name="IsMaleGender" Type="bit" Mode="In" />
         </Function>
@@ -1057,7 +1037,7 @@
           <Parameter Name="ter" Type="smallint" Mode="In" />
           <Parameter Name="full_name_part" Type="varchar" Mode="In" />
         </Function>
-        <Function Name="MC_summa_propisyu" ReturnType="varchar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="MC_summa_propisyu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
           <Parameter Name="Value" Type="money" Mode="In" />
         </Function>
         <Function Name="MC_USRD_OPTIONS_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1082,6 +1062,27 @@
           <Parameter Name="ter_po_umolchaniyu" Type="int" Mode="In" />
           <Parameter Name="sposob_otpravki_sms" Type="tinyint" Mode="In" />
         </Function>
+        <EntityContainer Name="MICROCREDITModelStoreContainer">
+          <EntitySet Name="POLD_ADDRESS" EntityType="Self.POLD_ADDRESS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLD_COMMENT" EntityType="Self.POLD_COMMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLD_CREDIT" EntityType="Self.POLD_CREDIT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLD_DOCUMENT" EntityType="Self.POLD_DOCUMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLD_FIO" EntityType="Self.POLD_FIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLD_MEDICAL" EntityType="Self.POLD_MEDICAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLD_ORG" EntityType="Self.POLD_ORG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLD_PAYMENT" EntityType="Self.POLD_PAYMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLD_PLAN" EntityType="Self.POLD_PLAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLD_PODOZR_TEL" EntityType="Self.POLD_PODOZR_TEL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLD_RELATIVE" EntityType="Self.POLD_RELATIVE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLD_WORK" EntityType="Self.POLD_WORK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLM_CREDIT_TEMPLATE" EntityType="Self.POLM_CREDIT_TEMPLATE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLM_HOLIDAYS" EntityType="Self.POLM_HOLIDAYS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLM_STAT_ORG" EntityType="Self.POLM_STAT_ORG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLM_VID_PLATEJA" EntityType="Self.POLM_VID_PLATEJA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLS_AK_SOST_ZAYM" EntityType="Self.POLS_AK_SOST_ZAYM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLS_LOG" EntityType="Self.POLS_LOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POLS_SYSTEM" EntityType="Self.POLS_SYSTEM" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -1651,6 +1652,7 @@
             <Parameter Name="sposob_otpravki_sms" Mode="In" Type="Byte" />
           </FunctionImport>
           <FunctionImport Name="MC_BROWSE_FIO" ReturnType="Collection(MICROCREDITModel.MC_BROWSE_FIO_Result)" />
+          <FunctionImport Name="MC_BROWSE_CURRENT_CREDIT" ReturnType="Collection(MICROCREDITModel.MC_BROWSE_CURRENT_CREDIT_Result)" />
         </EntityContainer>
         <EntityType Name="POLD_ADDRESS">
           <Key>
@@ -2472,6 +2474,11 @@
           <Property Type="Int32" Name="OSTATOK_PO_ZAYMU" Nullable="true" />
           <Property Type="String" Name="INFO" Nullable="true" MaxLength="4000" />
           <Property Type="Int32" Name="ITEM_INDEX_CREDIT" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="MC_BROWSE_CURRENT_CREDIT_Result">
+          <Property Type="String" Name="STATUS_NAME" Nullable="true" MaxLength="80" />
+          <Property Type="Int32" Name="SUMMA_ZAYMA" Nullable="true" />
+          <Property Type="String" Name="FIO" Nullable="true" MaxLength="58" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3435,6 +3442,15 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MC_BROWSE_CURRENT_CREDIT" FunctionName="MICROCREDITModel.Store.MC_BROWSE_CURRENT_CREDIT">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MICROCREDITModel.MC_BROWSE_CURRENT_CREDIT_Result">
+                <ScalarProperty Name="STATUS_NAME" ColumnName="STATUS_NAME" />
+                <ScalarProperty Name="SUMMA_ZAYMA" ColumnName="SUMMA_ZAYMA" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -3452,6 +3468,7 @@
         <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
