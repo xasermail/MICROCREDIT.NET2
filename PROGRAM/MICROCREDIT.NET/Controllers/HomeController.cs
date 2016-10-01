@@ -676,7 +676,16 @@ namespace MICROCREDIT.NET.Controllers
 
           using(MICROCREDITEntities db = new MICROCREDITEntities()) {
 
-            var lastCreditList = db.POLD_CREDIT.Take(5).OrderByDescending(x => x.COUNTER).ToList();
+            var lastCreditList = db.POLD_CREDIT
+            .Join(db.POLD_DOCUMENT,
+              credit => new {FIO_COUNTER = (long)credit.FIO_COUNTER, FIO_LPUIN = (int)credit.FIO_LPUIN, ACTIVE = 1},
+              doc => new {FIO_COUNTER = (long)doc.FIO_COUNTER, FIO_LPUIN = (int)doc.FIO_LPUIN, ACTIVE = (int)doc.ACTIVE}
+              ,(credit, doc) => new {
+                  credit.COUNTER,
+                  credit.DATA_ZAYMA,
+                  credit.SUMMA_K_OPLATE,
+                  FIO = doc.SURNAME + " " + doc.NAME + " " + doc.SECNAME})
+            .Take(5).OrderByDescending(x => x.COUNTER).ToList();
 
             return Content(JsonConvert.SerializeObject(lastCreditList), "application/json");
 
@@ -692,7 +701,7 @@ namespace MICROCREDIT.NET.Controllers
           
             var lastPaymentList = 
               (
-              from payment in db.POLD_PAYMENT
+              from payment in db.POLD_PAYMENT.Where(n => n.VID_PLATEJA == 1)
               join doc in db.POLD_DOCUMENT on
                 new { FIO_COUNTER = (long)payment.FIO_COUNTER, FIO_LPUIN = (int)payment.FIO_LPUIN, ACTIVE = 1}
                 equals

@@ -76,14 +76,14 @@
           <tr>
             <th>Дата займа</th>
             <th>Срок займа</th>
-            <th>Сумма к оплате</th>
+            <th>Клиент</th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="row in lastCredits">
             <td>{{row.DATA_ZAYMA | date:'dd.MM.yyyy'}}</td>
-            <td>{{row.SROK_ZAYMA}}</td>
             <td>{{row.SUMMA_K_OPLATE | currency}}</td>
+            <td>{{row.FIO}}</td>
           </tr>
         </tbody>
       </table>
