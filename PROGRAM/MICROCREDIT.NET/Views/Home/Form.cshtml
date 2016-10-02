@@ -1,6 +1,6 @@
 ﻿
 <style>
-  #formBackground {
+  #formBackground, #clientPhotoFormBackground {
     position: fixed;
     top: 0;
     left: 0;
@@ -8,15 +8,44 @@
     bottom: 0;
     opacity: 0.5;
     background-color: #000;
+    z-index: 1;
   }
 
-  #formForm {
+  #clientPhotoFormBackground {
+    z-index: 3;
+  }
+
+  #formForm, #clientPhotoForm {
     margin: 20px;
     background-color: #fff;
     position: absolute;
     top: 0;
     left: 0;
-    height: 400px;
+    min-height: 75vh;
+    z-index: 2;
+  }
+
+  #clientPhotoForm {
+    z-index: 4;
+  }
+
+  #clientPhotoForm {
+    margin: 60px;
+  }
+
+  @@media(min-width: 992px) {
+    #formFormTopBlock {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  #formFormPhoto {
+    text-align: center;
+  }
+
+  #formFormPhoto img {
+    max-width: 100%;
   }
 </style>
 
@@ -27,6 +56,120 @@
   </div>
 
   <div class="container" id="formForm">
+
+    <div class="row" id="formFormTopBlock">
+      <div class="col-md-9">
+
+        <!-- ФИО -->
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Фамилия</label>
+              <input type="text" class="form-control" placeholder="Фамилия" ng-model="surname">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Имя</label>
+              <input type="text" class="form-control" placeholder="Имя" ng-model="name">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Отчество</label>
+              <input type="text" class="form-control" placeholder="Отчество" ng-model="secname">
+            </div>
+          </div>
+        </div>
+        <!-- /фио -->
+
+        <!-- Пол, Дата рождения -->
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Пол</label>
+              <input type="text" class="form-control" placeholder="Пол" ng-model="sex">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Дата рождения</label>
+              <input type="date" class="form-control" placeholder="Дата рождения" ng-model="birthday">
+            </div>
+          </div>
+        </div>
+        <!-- /пол, дата рождения -->
+
+        <!-- Тип документа, Серия, Номер -->
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <label>Тип</label>
+              <input type="text" class="form-control" placeholder="Тип" ng-model="doctype">
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label>Серия</label>
+              <input type="text" class="form-control" placeholder="Серия" ng-model="sdoc">
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label>Номер</label>
+              <input type="text" class="form-control" placeholder="Номер" ng-model="ndoc">
+            </div>
+          </div>
+        </div>
+        <!-- /тип документа, серия, номер -->
+
+        <!-- Дата, Выдан -->
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label>Дата</label>
+              <input type="date" class="form-control" placeholder="Дата" ng-model="when">
+            </div>
+          </div>
+          <div class="col-md-9">
+            <div class="form-group">
+              <label>Выдан</label>
+              <input type="text" class="form-control" placeholder="Кем документ выдан" ng-model="who">
+            </div>
+          </div>
+        </div>
+        <!-- /дата, выдан -->
+
+      </div>
+
+      <div class="col-md-3" id="formFormPhoto">
+        <img ng-src="{{imgClientPhoto}}" />
+        <button class="btn btn-default" ng-click="clientPhotoFormShow()">Сделать фото</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="clientPhotoFormBackground" ng-show="clientPhotoFormBackgroundShow">
+  </div>
+
+  <div class="container" id="clientPhotoForm" ng-show="clientPhotoFormBackgroundShow">
+    <div class="row">
+      <div class="col-md-6">
+        <div id="my_camera"></div>
+        <button class="btn btn-default" ng-click="takeSnapshot()">Сделать фото</button>
+      </div>
+      <div class="col-md-6">
+        <div id="my_camera_results">Your captured image will appear here...</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn btn-default" ng-click="clientPhotoFormSave()">Сохранить</button>
+        <button class="btn btn-default" ng-click="clientPhotoFormClose()">Закрыть</button>
+      </div>
+    </div>
   </div>
 
 </div>
